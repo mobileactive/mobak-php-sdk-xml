@@ -1,0 +1,12 @@
+{
+    "name": "grigorieff/mobak-php-sdk-xml",
+    "description": "PHP SDK for mobak.ru SMS service",
+    "authors": [
+        {
+            "name": "Mike Grigorieff",
+            "email": "grigorief@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

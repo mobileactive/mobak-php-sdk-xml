@@ -149,29 +149,15 @@ class MobakRequest
 
         $result = $connection->send($url, $this->method, $params);
 
-        $decodedResult = simplexml_load_string($result);
 
-        if ($decodedResult === false) {
+        $xml = simplexml_load_string($result);
+        if (!$xml) {
             throw new MobakBaseException("Invalid response");
         }
 
-        if ($decodedResult->information[0]->attributes['code'] !== 0) {
-            throw new MobakRequestException($result, $decodedResult, $connection->getResponseHttpStatusCode());
-        }
+        $decodedResult = $this->xmlToArray($xml);
 
         return new MobakResponse($this, $decodedResult, $result);
-    }
-
-    /**
-     * Generate and return the appsecret_proof value for an access_token
-     *
-     * @param string $token
-     *
-     * @return string
-     */
-    public function getAppSecretProof($token)
-    {
-        return hash_hmac('sha256', $token, FacebookSession::_getTargetAppSecret());
     }
 
     /**
@@ -195,6 +181,19 @@ class MobakRequest
         // Favor params from the original URL over $params
         $params = array_merge($params, $query_array);
         return $path . '?' . http_build_query($params, null, '&');
+    }
+
+    /**
+     * @param $xmlObject
+     * @param array $out
+     * @return array
+     */
+    protected function xmlToArray($xmlObject, $out = array())
+    {
+        foreach ((array)$xmlObject as $index => $node)
+            $out[$index] = (is_object($node)) ? $this->xmlToArray($node) : $node;
+
+        return $out;
     }
 
 }

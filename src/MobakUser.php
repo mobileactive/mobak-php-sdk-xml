@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobak;
+namespace mobak;
 /**
  * Class MobakUser
  * @package Mobak

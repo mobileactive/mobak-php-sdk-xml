@@ -32,10 +32,14 @@ class Mobak
         $attributes['sender'] = !isset($attributes['sender']) ? 'Info' : trim($attributes['sender']);
         $attributes['uid'] = !isset($attributes['uid']) ? sha1((new \DateTime())->format("YmdHis")) : trim($attributes['uid']);
 
-        $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><request uid=\"{uid}\" sender=\"{sender}\">";
-        $xml .= "<message><text>{message}</text><abonent phone=\"{phone}\"></abonent></message></request>";
+        $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+        $xml .= "<security><login value=\"{login}\"/><sign value=\"{signature}\" /></security>";
+        $xml .= "<request uid=\"{uid}\" sender=\"{sender}\">";
+        $xml .= "<message><text>{message}</text><abonent phone=\"{phone}\"/></message></request>";
 
         $xml = preg_replace("/\{uid\}/i", $attributes["uid"], $xml);
+        $xml = preg_replace("/\{login\}/i", $this->getUser()->getLogin(), $xml);
+        $xml = preg_replace("/\{signature\}/i", strtolower(md5($attributes['uid'] . $this->getUser()->getPassword())), $xml);
         $xml = preg_replace("/\{sender\}/i", $attributes["sender"], $xml);
         $xml = preg_replace("/\{message\}/i", $attributes["message"], $xml);
         $xml = preg_replace("/\{phone\}/i", $attributes["phone"], $xml);
@@ -46,6 +50,5 @@ class Mobak
 
         return $request->execute()->getMobakObject();
     }
-
 
 }

@@ -1,8 +1,8 @@
 <?php
-namespace Mobak;
+namespace mobak;
 
-use Mobak\Http\MobakHttpable;
-use Mobak\Http\MobakCurlHttpClient;
+use mobak\Http\MobakHttpable;
+use mobak\Http\MobakCurlHttpClient;
 
 class MobakRequest
 {

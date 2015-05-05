@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobak;
+namespace mobak;
 /**
  * Class MobakConfigurationException
  * @package Mobak

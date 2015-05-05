@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobak\Http;
+namespace mobak\Http;
 
 /**
  * Class MobakCurl

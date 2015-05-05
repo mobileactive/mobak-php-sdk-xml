@@ -12,7 +12,7 @@
         "php": ">=5.3.2"
     },
     "autoload": {
-        "psr-4": { "Mobak\\": "src/" }
+        "psr-4": { "mobak\\": "src/" }
     },
     "extra": {
         "branch-alias": {

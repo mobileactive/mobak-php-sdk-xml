@@ -33,8 +33,8 @@ class Mobak
         $attributes['uid'] = !isset($attributes['uid']) ? sha1((new \DateTime())->format("YmdHis")) : trim($attributes['uid']);
 
         $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-        $xml .= "<security><login value=\"{login}\"/><sign value=\"{signature}\" /></security>";
         $xml .= "<request uid=\"{uid}\" sender=\"{sender}\">";
+        $xml .= "<security><login value=\"{login}\"/><sign value=\"{signature}\" /></security>";
         $xml .= "<message><text>{message}</text><abonent phone=\"{phone}\"/></message></request>";
 
         $xml = preg_replace("/\{uid\}/i", $attributes["uid"], $xml);

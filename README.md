@@ -10,14 +10,14 @@ PHP SDK для работы с XML API Mobile Active
 
 Для установки пакета используйте composer:
 
-`composer install "mobileactive/mobak-php-xml-sdk" --save`
+`composer install "grigorieff/mobak-php-xml-sdk" --save`
 
 или в файле composer.json в require-зависимости добавить:
 
 ```
 {
   "require" : {
-    "mobileactive/mobak-php-xml-sdk" : "1.0.*"
+    "grigorieff/mobak-php-xml-sdk" : "0.1.*"
   }
 }
 ```

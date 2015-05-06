@@ -28,7 +28,7 @@ PHP SDK для работы с XML API Mobile Active
 Пример отправки СМС-сообщения:
 
 ```php
-use Mobak;
+use mobak\Mobak;
 
 $smsSender = new Mobak([
     'login' => 'YOUR_LOGIN',

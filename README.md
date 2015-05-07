@@ -35,11 +35,14 @@ $smsSender = new Mobak([
     'password' => 'YOUR_PASSWORD',
 ])
 
-$smsSender->send([
+$result = $smsSender->send([
     'message' => "Your message text",
     'sender' => "Info",
     'phone' => '79194839xxx'
 ]);
+
+// получить результат в виде массива
+var_dump($result->toArray());
 
 ```
 

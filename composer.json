@@ -1,5 +1,5 @@
 {
-    "name": "grigorieff/mobak-php-sdk-xml",
+    "name": "mobileactive/mobak-php-sdk-xml",
     "description": "PHP SDK for mobak.ru SMS service",
     "license": "MIT",
     "authors": [
